@@ -11,6 +11,8 @@ import {
 } from '@material-ui/core';
 
 import ReactFlow from "react-flow-renderer";
+import AmplitudeEvent from '../components/AmplitudeEvent'
+
 
 // const elements = [
 //   {
@@ -43,6 +45,7 @@ const elements = [
     { id: "14", data: { label: "Attend Visa" }, position: { x: 850, y: 100 } },
     { id: "15", data: { label: "Get Visa" }, position: { x: 1050, y: 100 } },
 
+    { id: "e1-11", source: "1", target: "11", type: "step"},
     { id: "e1-1-2", source: "11", target: "12", type: "step", animated: true },
     { id: "e1-2-3", source: "12", target: "13", type: "step", animated: true },
     { id: "e1-3-4", source: "13", target: "14", type: "step", animated: true },
@@ -69,6 +72,7 @@ const elements = [
     { id: "36", data: { label: "Get social security from TK" }, position: { x: 1250, y: 350 } },
     { id: "37", data: { label: "Wait for 2 payslips and Apply for Blue card" }, position: { x: 1250, y: 450 } },
 
+    { id: "e3-31", source: "3", target: "31", type: "step"},
     { id: "e3-1-2", source: "31", target: "32", type: "step", animated: true },
     { id: "e3-2-3", source: "32", target: "33", type: "step", animated: true },
     { id: "e3-3-4", source: "33", target: "34", type: "step", animated: true },
@@ -82,14 +86,18 @@ const elements = [
     { id: "43", data: { label: "Do city registration" }, position: { x: 650, y: 450 } },
     { id: "44", data: { label: "Apply for PR" },  type: "output", position: { x: 850, y: 450 } },
 
+    { id: "e4-41", source: "4", target: "41", type: "step"},
     { id: "e4-1-2", source: "41", target: "42", type: "step", animated: true },
     { id: "e4-2-3", source: "42", target: "43", type: "step", animated: true },
     { id: "e4-3-4", source: "43", target: "44", type: "step", animated: true },
 ];
 
-const graphStyles = { width: "100%", height: "500px" };
+const graphStyles = { width: "100%", height: "600px" };
 
-const BasicGraph = () => <ReactFlow elements={elements} style={graphStyles} />;
+const BasicGraph = () => {
+    AmplitudeEvent("/bluecard-loaded");
+return <ReactFlow elements={elements} style={graphStyles} />;
+};
 
 // Custom
 // const customElement = [

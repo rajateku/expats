@@ -11,7 +11,7 @@ function AmplitudeClick (clickText, user_id) {
     // const [ref, setRef] = useState(document.referrer);
     // App Opened
     client.logEvent({
-        event_type: "TelFylm - " + clickText,
+        event_type: "Expatgyd - " + clickText,
         user_id: user_id,
         event_properties: {
             keyString: document.referrer,

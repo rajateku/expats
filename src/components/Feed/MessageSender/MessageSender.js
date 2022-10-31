@@ -6,6 +6,9 @@ import firebase from 'firebase'
 import { Avatar } from '@material-ui/core'
 // import { Videocam, PhotoLibrary, InsertEmoticon} from '@material-ui/icons'
 import { Button } from '@material-ui/core';
+import Select from 'react-select'
+
+
 
 import {
 
@@ -38,7 +41,22 @@ const MessageSender = () => {
     const { currentUser } = useContext(AuthContext);
 
     const [input, setInput] = useState('');
+    const [city, setCity] = useState('');
     const [imageUrl, setImageUrl] = useState('');
+    const [comments, setComments] = useState([]);
+    const options = [
+        { value: 'Munich', label: 'Munich' },
+        { value: 'Berlin', label: 'Berlin' },
+        { value: 'Düsseldorf', label: 'Düsseldorf' },
+        { value: 'Hamburg', label: 'Hamburg' }
+        // { value: '', label: '' }
+    ]
+
+    const handleFilter = (role) => {
+        console.log(role.value)
+        // AmplitudeClick("filter-cliked-" + role.value, currentUser.displayName )
+        setCity(role.value)
+    };
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -49,7 +67,9 @@ const MessageSender = () => {
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             profilePic: currentUser.photoURL,
             username: currentUser.displayName,
-            image: imageUrl
+            image: imageUrl,
+            comments: comments,
+            city: city,
         })
 
         // clear form
@@ -73,20 +93,23 @@ const MessageSender = () => {
                                     onChange={e => setInput(e.target.value)}
                                     className="messageSenderInput"
                                     // placeholder={`Post an requirement or opportunity, ${currentUser.displayName}?`}
-                                    placeholder={`Post a requirement or an opportunity`}
-                                />
-                                <input
+                                    placeholder={`Ask for any help`}
+                                />                                
+                                {/* <input
                                     value={imageUrl}
                                     onChange={e => setImageUrl(e.target.value)}
                                     className="messageImageInput"
-                                    placeholder={"Public Image URL (Optional)"} />
+                                    placeholder={"Public Image URL (Optional)"} /> */}
                                 {/* <button onClick={handleSubmit} type="submit">Hidden submit</button> */}
                             </form>
+                            
                             <Button variant="contained" onClick={handleSubmit} type="submit" color="blue" > Submit</Button>
                             {/* <Button sx = {{ backgroundcolor : "blue"}}>submit</Button> */}
 
                         </div>
                     </Card>
+                    <Select isSearchable={false} placeholder="Select city related to post"   onChange={(e) => handleFilter(e)} options={options} />
+
                 </Grid>
 
                 {/* <Grid item sm={0} md = {2} ></Grid> */}

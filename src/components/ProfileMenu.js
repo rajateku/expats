@@ -93,7 +93,7 @@ export default function AccountMenu(props) {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem ><Link to="profile">{currentUser.displayName}</Link></MenuItem> 
+        {/* <MenuItem ><Link to="profile">{currentUser.displayName}</Link></MenuItem>  */}
         <MenuItem onClick={() => {
                             firebase.auth().signOut()
                                 .then(() => {

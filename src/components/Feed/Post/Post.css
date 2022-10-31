@@ -1,10 +1,12 @@
 /* post */
 .post {
-    /* width: 100%; */
-    border-radius: 15%;
-    background-color: white;
-    box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
-    margin-bottom: 2%;
+    width: 50%;
+    border-radius: 1%;
+    background-color: #eff2f5;
+    /* box-shadow: 1px 5px 7px -7px rgba(0, 0, 0, 0.75); */
+    /* margin-bottom: 2%; */
+    border-color: #cfdbd3;
+    padding-left: 1%;
 }
 
 /* post Top */
@@ -12,12 +14,11 @@
     display: flex;
     position: relative;
     align-items: center;
-    padding: 15px;
+    /* padding: 15px; */
 }
 .postAvatar {
     margin-right: 10px;
 }
-.postTopInfo {}
 .postTopInfo h3 {
     font-size: medium;
 }
@@ -28,9 +29,11 @@
 
 /* post Bottom */
 .postBottom {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 15px 25px;
+    /* margin-top: 10px;
+    margin-bottom: 10px; */
+    /* padding: 15px 25px; */
+    padding-left: 1%;
+    /* padding-bottom: 1%; */
 }
 
 /* post Image */
@@ -72,4 +75,11 @@
 .messageSender button:hover {
     background-color: white;
     color: #469c60;
+}
+
+.comments-section{
+    width: 50%;
+    background-color: #eff2f5;
+    margin-bottom: 2%;
+    padding: 1%;
 }

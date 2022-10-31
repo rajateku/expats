@@ -17,7 +17,7 @@ const Footer = () => {
             <div class="row">
               <div class="col l6 s12">
                 <h5 >Contact</h5>
-                <p class=" text-lighten-4">Leave your feedback at expatgyd@gmail.com</p>
+                <p class=" text-lighten-4">Leave your feedback at nriexpats@gmail.com</p>
               </div>
               <div class="col l4 offset-l2 s12">
                 {/* <h5 >Social</h5> */}

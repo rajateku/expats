@@ -16,9 +16,10 @@ import UsefulLinks from './pages/UsefulLinks';
 import Opportunities from './pages/Opportunities';
 import Website from './pages/Website';
 import Navbar from './components/Navbar';
+import Feed from './components/Feed/Feed';
 
 
-import Feed from './components/PostOpportunities/Feed';
+// import Feed from './components/PostOpportunities/Feed';
 import HomeGallery from './components/HomeGallery';
 
 // import Navbar from './components/Navbar2';
@@ -32,8 +33,8 @@ const App = () => {
         <Navbar />
         <Switch>
           {/* <PrivateRoute path="/" exact component={Feed}/> */}
-          <PrivateRoute path="/" exact component={HomeGallery}/>
-          <PrivateRoute path="/opportunities" exact component={Feed}/>
+          <PrivateRoute path="/" exact component={Feed}/>
+          {/* <PrivateRoute path="/opportunities" exact component={Feed}/> */}
           <PrivateRoute path="/profile" exact component={Profile}/>
           <Route path="/explore"  component={Website}/>
           <Route path="/aboutus" component={Aboutus}/>

@@ -22,8 +22,8 @@ import {
 } from '@material-ui/core';
 
 const FAQs = (props) => {
-    AmplitudeEvent("/aboutus-loaded");
-    const faqsData = faqs.slice(0, 3);
+    AmplitudeEvent("/faqs-loaded");
+    const faqsData = faqs;
 
 
 
@@ -81,8 +81,10 @@ const FAQs = (props) => {
                 {
                         faqsData.map((obj) => (
                             <>
-                            <p> {obj.q} </p>
+
+                            <p><strong>{obj.q} </strong></p>
                             <p> {obj.a} </p>
+                            <br/>
                             </>
                         ))
                     }

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Post.css'
+import Select from 'react-select'
+import { ThumbUp, ChatBubbleOutline, AccountCircle, NearMe, ExpandMoreOutlined } from '@material-ui/icons';
 
 import {
+  Button,
   Avatar,
   Card,
   CardHeader,
@@ -17,9 +20,14 @@ import {
 }
   from '@material-ui/core';
 
+import { AuthContext } from '../../Auth/Auth';
+
+// database
+import firebase from 'firebase'
+import firebase2 from '../../firebase'
+const db = firebase2.firestore();
 
 
-// import { ThumbUp, ChatBubbleOutline, AccountCircle, NearMe, ExpandMoreOutlined } from '@material-ui/icons';
 
 const Post = ({ profilePic, image, username, timestamp, message }) => {
   return (
@@ -70,6 +78,7 @@ const Post = ({ profilePic, image, username, timestamp, message }) => {
 
 
     </Grid>
+    
 
 
 
@@ -118,4 +127,152 @@ const Post = ({ profilePic, image, username, timestamp, message }) => {
   )
 }
 
-export default Post;
+const Post2 = ({ postid, postcity, profilePic, image, username, timestamp, message }) => {
+  const [comment, setInput] = useState('');
+  const [allComments, setAllComments] = useState([]);
+  const [docid, setDocId] = useState(postid);
+  const [city, setCity] = useState(postcity);
+  const { currentUser } = useContext(AuthContext);
+  const [imageUrl, setImageUrl] = useState('');
+  // setInput({"name" : currentUser.displayName,"comment" : comment})
+  // const snap = await getDoc(doc(db, 'posts', docid));
+  // console.log(snap)
+
+  var docRef = db.collection("posts").doc(docid);
+  console.log("city: ", postcity);            
+
+  
+  useEffect(() => {
+    docRef.get().then(function(doc) {
+      if (doc.exists) {
+          console.log("Document data:", doc.data().comments);
+          setAllComments(doc.data().comments)
+      } else {
+          // doc.data() will be undefined in this case
+              console.log("No such document!");
+          }
+      }).catch(function(error) {
+          console.log("Error getting document:", error);
+      });
+
+    }, [])
+  
+
+
+
+
+          const handleComment = e => {
+            e.preventDefault();
+            console.log("inside handle comment", docid);
+            console.log("inside handle comment: ", db.collection("posts").doc(docid).get());            
+            
+
+            // docRef.get().then(function(doc) {
+            //     if (doc.exists) {
+            //         console.log("Document data:", doc.data().comments);
+            //         setAllComments(doc.data().comments)
+            //     } else {
+            //         // doc.data() will be undefined in this case
+            //         console.log("No such document!");
+            //     }
+            // }).catch(function(error) {
+            //     console.log("Error getting document:", error);
+            // });
+
+
+            console.log("allComments" , allComments)
+            console.log(comment)
+            allComments.push(comment);
+            setAllComments( allComments)
+            console.log("allComments after addition", allComments)
+
+            // send data to database
+            db.collection("posts").doc(docid).update({comments: allComments});
+
+            // db.collection('posts').add({
+            //     message: comment,
+            //     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            //     profilePic: currentUser.photoURL,
+            //     username: currentUser.displayName,
+            //     image: imageUrl
+            // })
+
+            // clear form
+            setInput('');
+          // console.log("comment" + comment)
+        }
+
+
+  return (
+<>
+      
+
+      <div className="post">
+          <div className="postTop">
+              <Avatar src={profilePic} className="postAvatar" />
+
+              <div className="postTopInfo">
+                  <h3>{username}</h3>
+                  {/* <p>time</p> */}
+                  {/* <p>{new Date(timestamp?.toDate()).toUTCString()}</p> */}
+                  <p>{new Date(timestamp?.toDate()).toUTCString()}, {city}</p>
+                  {/* <p>{city}</p> */}
+              </div>
+          </div>
+
+          <div className="postBottom">
+              <p>{message}</p>
+              
+
+          </div>
+
+          {/* <div className="postImage">
+              <img src={image} alt=""/>
+          </div> */}
+          <hr></hr>
+          
+      </div>
+      
+
+      <div className="comments-section" >
+          <p> Comments</p>
+          {
+                allComments.map(comment => (
+                    <p> {comment} </p>
+                        
+                ))
+            }
+              {/* <div className="postOption">
+                  <ThumbUp />
+                  <p>Like</p>
+              </div>
+
+              <div className="postOption">
+                  <ChatBubbleOutline />
+                  <p>Comment</p>
+              </div> */}
+              <form>
+              {/* <span> <ChatBubbleOutline /><p>Comment</p></span> */}
+                <input
+                    value={comment}
+                    onChange={e => setInput(e.target.value)}
+                    className="postOption"
+                    placeholder={`Add a comment`}
+                />
+                <Button variant="contained" onClick={handleComment} type="submit" color="blue" > Submit Comment</Button>                 
+              </form>
+              {/* <div className="postOption">
+                  <NearMe />
+                  <p>Save</p>
+              </div> */}
+              {/* <div className="postOption">
+                  <AccountCircle />
+                  <ExpandMoreOutlined />
+              </div> */}
+      </div>
+
+      </>
+  )
+}
+
+export default Post2;

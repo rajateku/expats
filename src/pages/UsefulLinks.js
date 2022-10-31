@@ -22,7 +22,7 @@ import {
 } from '@material-ui/core';
 
 const FAQs = (props) => {
-    AmplitudeEvent("/aboutus-loaded");
+    AmplitudeEvent("/usefullinks-loaded");
     const linksData = links;
     // json_keys = Object.keys(linksData)
 
@@ -78,7 +78,7 @@ const FAQs = (props) => {
     let display = (
         <>
             <div class="about-us">
-                <h4>Links</h4>
+                <h4>Links (Mostly relevant to Munich)</h4>
                 
                 {
                         // linksData.map((obj, key) => (

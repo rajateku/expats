@@ -4,6 +4,8 @@ import M from 'materialize-css';
 import firebase from './firebase';
 import { AuthContext } from './Auth/Auth';
 import { Avatar, CardHeader, Box, Menu, MenuItem } from '@material-ui/core'
+// import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
+// import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import '../App.css';
 
 import ProfileMenu from './ProfileMenu'
@@ -20,15 +22,16 @@ const Navbar = () => {
     }, [])
 
     const renderList = () => {
-        // console.log(currentUser.displayName)
-        // console.log(currentUser.displayName)
         if (currentUser) {
             return [
                 // <li className="sidenav-close" key="1"><Avatar src={currentUser.photoURL} alt="M"> Michael </Avatar></li>,
                 
-                <li className="sidenav-close" key="1"><Link to="/home">Home</Link></li>,
-                <li className="sidenav-close" key="2"><Link to="/opportunities">Opportunities</Link></li>,
-                <li className="sidenav-close" key="3"><Link to="/profile">{currentUser.displayName}</Link></li>,
+                <li className="sidenav-close" key="21"><Link to="/home">Home</Link></li>,
+                // <li className="sidenav-close" key="23"><Link to="/bluecard">Blue Card</Link></li>,
+                // <li className="sidenav-close" key="24"><Link to="/faqs">FAQs</Link></li>,
+                // <li className="sidenav-close" key="25"><Link to="/usefullinks">Useful Links</Link></li>,
+                // <li className="sidenav-close" key="2"><Link to="/opportunities">Opportunities</Link></li>,
+                // <li className="sidenav-close" key="3"><Link to="/profile">{currentUser.displayName}</Link></li>,
 
                 // <li className="sidenav-close" key="3"><Link to="/feature3">Feature 3</Link></li>,
                 // <li className="sidenav-close" key="10">
@@ -67,9 +70,10 @@ const Navbar = () => {
                 <li className="sidenav-close" key="13"><Link to="/bluecard">Blue Card</Link></li>,
                 <li className="sidenav-close" key="14"><Link to="/faqs">FAQs</Link></li>,
                 <li className="sidenav-close" key="15"><Link to="/usefullinks">Useful Links</Link></li>,
+                // <li className="sidenav-close" key="15"><NotificationsNoneIcon> </NotificationsNoneIcon></li>,
                 // <li className="sidenav-close" key="13"><Link to="/resources">Resources</Link></li>,
-                // <li className="sidenav-close" key="14"><Link to="/signin">Sign in</Link></li>,
-                // <li className="sidenav-close" key="15"><Link to="/signup">Sign up</Link></li>
+                <li className="sidenav-close" key="14"><Link to="/signin">Sign in</Link></li>,
+                <li className="sidenav-close" key="15"><Link to="/signup">Sign up</Link></li>
             ];
         }
     };
