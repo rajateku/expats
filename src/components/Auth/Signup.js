@@ -50,7 +50,7 @@ const Signup = () => {
 
     const postData = (event) => {
         if (!name) return M.toast({ html: "Name can't be empty", classes: "#c62828 red darken-3" });
-        if (!role) return M.toast({ html: "Role can't be empty", classes: "#c62828 red darken-3" });
+        // if (!role) return M.toast({ html: "Role can't be empty", classes: "#c62828 red darken-3" });
         setLoading(true);
         event.preventDefault();
         firebase
@@ -84,7 +84,7 @@ const Signup = () => {
     };
 
     const googleAuth = () => {
-        if (!role) return M.toast({ html: "Role can't be empty", classes: "#c62828 red darken-3" });
+        // if (!role) return M.toast({ html: "Role can't be empty", classes: "#c62828 red darken-3" });
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider)
             .then(result => {
@@ -158,7 +158,7 @@ const Signup = () => {
             {/* <input type="text" placeholder="Role (Ex: Actor, Singer, Writer)" value={role} onChange={(event) => setRole(event.target.value)} /> */}
             {/* <Select placeholder="Select Role (Can be changed later)" options={options} onChange={(e) => find(e)} styles={customStyles} menuColor='red' /> */}
             {/* <br /> */}
-            <p>Select role, can be changed later</p>
+            {/* <p>Select role, can be changed later</p>
             <Select
                 // defaultValue={flavourOptions[2]}
                 isSearchable={false}
@@ -175,7 +175,7 @@ const Signup = () => {
                         primary: 'black',
                     },
                 })}
-            />
+            /> */}
                         <br />
 
 

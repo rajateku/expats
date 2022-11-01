@@ -26,12 +26,13 @@ const Navbar = () => {
             return [
                 // <li className="sidenav-close" key="1"><Avatar src={currentUser.photoURL} alt="M"> Michael </Avatar></li>,
                 
-                <li className="sidenav-close" key="21"><Link to="/home">Home</Link></li>,
-                // <li className="sidenav-close" key="23"><Link to="/bluecard">Blue Card</Link></li>,
-                // <li className="sidenav-close" key="24"><Link to="/faqs">FAQs</Link></li>,
-                // <li className="sidenav-close" key="25"><Link to="/usefullinks">Useful Links</Link></li>,
+                <li className="sidenav-close" key="221"><Link to="/home">Home</Link></li>,
+                <li className="sidenav-close" key="222"><Link to="/bluecard">Blue Card</Link></li>,
+                // <li className="sidenav-close" key="13"><Link to="/faqs">FAQs</Link></li>,
+                // <li className="sidenav-close" key="14"><Link to="/usefullinks">Useful Links</Link></li>,
                 // <li className="sidenav-close" key="2"><Link to="/opportunities">Opportunities</Link></li>,
                 // <li className="sidenav-close" key="3"><Link to="/profile">{currentUser.displayName}</Link></li>,
+                <li className="sidenav-close" key="30">{currentUser.displayName}</li>,
 
                 // <li className="sidenav-close" key="3"><Link to="/feature3">Feature 3</Link></li>,
                 // <li className="sidenav-close" key="10">
@@ -41,7 +42,7 @@ const Navbar = () => {
                 //                 src={currentUser.photoURL}
                 //             />
                 //         }
-                //     // title={currentUser.displayName}
+                //     title={currentUser.displayName}
                 //     /></li>,
                 <ProfileMenu currentUser={currentUser}/>,
                 
@@ -67,13 +68,13 @@ const Navbar = () => {
                 <li className="sidenav-close" key="11"><Link to="/explore">Home</Link></li>,
                 // <li className="sidenav-close" key="12"><Link to="/aboutus">About Us</Link></li>,
 
-                <li className="sidenav-close" key="13"><Link to="/bluecard">Blue Card</Link></li>,
-                <li className="sidenav-close" key="14"><Link to="/faqs">FAQs</Link></li>,
-                <li className="sidenav-close" key="15"><Link to="/usefullinks">Useful Links</Link></li>,
+                <li className="sidenav-close" key="12"><Link to="/bluecard">Blue Card</Link></li>,
+                <li className="sidenav-close" key="13"><Link to="/faqs">FAQs</Link></li>,
+                <li className="sidenav-close" key="14"><Link to="/usefullinks">Useful Links</Link></li>,
                 // <li className="sidenav-close" key="15"><NotificationsNoneIcon> </NotificationsNoneIcon></li>,
                 // <li className="sidenav-close" key="13"><Link to="/resources">Resources</Link></li>,
-                <li className="sidenav-close" key="14"><Link to="/signin">Sign in</Link></li>,
-                <li className="sidenav-close" key="15"><Link to="/signup">Sign up</Link></li>
+                <li className="sidenav-close" key="15"><Link to="/signin">Sign in</Link></li>,
+                <li className="sidenav-close" key="16"><Link to="/signup">Sign up</Link></li>
             ];
         }
     };

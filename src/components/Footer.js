@@ -21,7 +21,7 @@ const Footer = () => {
               </div>
               <div class="col l4 offset-l2 s12">
                 {/* <h5 >Social</h5> */}
-                <p>Expatgyd © 2022 Copyright</p>
+                <p>NRIExpats © 2022 Copyright</p>
                 <ul >
                   {/* <li><a href="https://www.instagram.com/theclimatebook/" target="_blank">Instagram</a></li> */}
                   {/* <li><a href="#!">Twitter</a></li> */}

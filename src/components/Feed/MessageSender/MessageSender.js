@@ -44,10 +44,12 @@ const MessageSender = () => {
     const [city, setCity] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [comments, setComments] = useState([]);
+    const [allCommentsWithNames, setAllCommentsWithNames] = useState([]);
     const options = [
         { value: 'Munich', label: 'Munich' },
         { value: 'Berlin', label: 'Berlin' },
         { value: 'Düsseldorf', label: 'Düsseldorf' },
+        { value: 'Frankfurt', label: 'Frankfurt' },
         { value: 'Hamburg', label: 'Hamburg' }
         // { value: '', label: '' }
     ]
@@ -69,6 +71,7 @@ const MessageSender = () => {
             username: currentUser.displayName,
             image: imageUrl,
             comments: comments,
+            allCommentsWithNames : allCommentsWithNames,
             city: city,
         })
 

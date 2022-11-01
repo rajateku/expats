@@ -27,6 +27,14 @@
     color: gray;
 }
 
+.single-comment h3 {
+    font-size: medium;
+}
+.single-comment p {
+    font-size: medium;
+    color: gray;
+}
+
 /* post Bottom */
 .postBottom {
     /* margin-top: 10px;

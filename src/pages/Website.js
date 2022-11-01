@@ -60,7 +60,7 @@ const Website = () => {
 
     return (
         <>
-        <Carousel
+            <Carousel
                 showStatus={false}
                 showThumbs={false}
                 showArrows={false}
@@ -83,9 +83,11 @@ const Website = () => {
             <div class="section1-grid">
                 <div class="website-section-heading">
                     <Typography variant="h3" >
-                        Have a great expat experience!
+                    Enjoy the international experience with fellow Indians
                     </Typography>
-                    <p> A place to meet the needs of your expat journey in Germany. </p>
+                    <p> </p>
+                    <h6> A place to meet the needs of your expat journey in Germany </h6>
+
 
                 </div>
             </div>
@@ -94,8 +96,13 @@ const Website = () => {
             <div class="section1-grid">
                 <div class="website-section-heading">
                     <Typography variant="h4" >
-                    Meet the needs of your expat journey.
-                    </Typography>
+                    Have a great expat experience!                    </Typography>
+                    <p>  </p>
+                    <button class="see-more" >
+                        <Typography variant="h5" >
+                            <Link to="/signup" class="see-more">  Sign Up</Link>
+                        </Typography>
+                    </button>
                 </div>
 
                 <Grid

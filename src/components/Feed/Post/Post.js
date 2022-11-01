@@ -129,6 +129,8 @@ const Post = ({ profilePic, image, username, timestamp, message }) => {
 
 const Post2 = ({ postid, postcity, profilePic, image, username, timestamp, message }) => {
   const [comment, setInput] = useState('');
+  // const [commentObject, setCommentObject] = useState({});
+  const [allCommentObjects, setAllCommentObjects] = useState([]);
   const [allComments, setAllComments] = useState([]);
   const [docid, setDocId] = useState(postid);
   const [city, setCity] = useState(postcity);
@@ -136,10 +138,12 @@ const Post2 = ({ postid, postcity, profilePic, image, username, timestamp, messa
   const [imageUrl, setImageUrl] = useState('');
   // setInput({"name" : currentUser.displayName,"comment" : comment})
   // const snap = await getDoc(doc(db, 'posts', docid));
-  // console.log(snap)
+  console.log("currentUser: ", currentUser.displayName)
 
   var docRef = db.collection("posts").doc(docid);
-  console.log("city: ", postcity);            
+  console.log("city: ", postcity);
+  var commentObject =({"user": currentUser.displayName, "comment" : comment, "imageUrl" : currentUser.photoURL})            
+  // setCommentObject("hjh")            
 
   
   useEffect(() => {
@@ -147,6 +151,7 @@ const Post2 = ({ postid, postcity, profilePic, image, username, timestamp, messa
       if (doc.exists) {
           console.log("Document data:", doc.data().comments);
           setAllComments(doc.data().comments)
+          setAllCommentObjects(doc.data().allCommentsWithNames)
       } else {
           // doc.data() will be undefined in this case
               console.log("No such document!");
@@ -182,12 +187,16 @@ const Post2 = ({ postid, postcity, profilePic, image, username, timestamp, messa
 
             console.log("allComments" , allComments)
             console.log(comment)
+            // setCommentObject({"user": "user", "comment" : "comment"})     
             allComments.push(comment);
+            allCommentObjects.push(commentObject);
             setAllComments( allComments)
             console.log("allComments after addition", allComments)
+            console.log("allCommentObjects", allCommentObjects)
 
             // send data to database
             db.collection("posts").doc(docid).update({comments: allComments});
+            db.collection("posts").doc(docid).update({allCommentsWithNames: allCommentObjects});
 
             // db.collection('posts').add({
             //     message: comment,
@@ -237,8 +246,19 @@ const Post2 = ({ postid, postcity, profilePic, image, username, timestamp, messa
       <div className="comments-section" >
           <p> Comments</p>
           {
-                allComments.map(comment => (
-                    <p> {comment} </p>
+                allCommentObjects.map(commentWithName => (
+                    <>
+                    <div className="postTop">
+                    <Avatar src={commentWithName.imageUrl} className="postAvatar" />
+
+                    <div className="single-comment">
+                        <h3>{commentWithName.user}</h3>
+                        <p> {commentWithName.comment}</p>
+                    </div>
+                    </div>
+                    {/* <Avatar src={commentWithName.imageUrl} className="postAvatar" /> */}
+                    {/* <p> {commentWithName.user}: {commentWithName.comment}</p> */}
+                    </>
                         
                 ))
             }

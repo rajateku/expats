@@ -131,7 +131,7 @@ return <ReactFlow elements={elements} style={graphStyles} />;
 
 export default function BlueCard() {
     return (<>
-            <p> Blue card step by step guide. </p>
+        <h4> Blue card step by step guide. </h4>
         <BasicGraph />
         </>);
     
